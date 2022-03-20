@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Войти</title>
+    <link href="css/login.css" rel="stylesheet" >
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="loginText">Войти</p>
+        <form name="login" method="post" class="login" action="/login">
+            <div class="email">
+                <p><label for="username">Почта </label></p>
+                <input type="email" id="username" name="username" placeholder="Почта" >
+            </div>
+            <div class="password">
+                <p><label for="password">Пароль </label></p>
+                <input type="password" id="password" name="password" placeholder="Пароль" >
+                <a href="#" class="password-control"></a>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Войти</button>
+            </div>
+        </form>
+        <div class="goToRegistration">
+            <p class="toReg">
+                Нет аккаунта?
+            </p>
+            <a class="reg" href="/registration">
+                Зарегистрироваться
+            </a>
+        </div>
+    </main>
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script rel="script" src="js/script.js"></script>
+</body>
+</html>

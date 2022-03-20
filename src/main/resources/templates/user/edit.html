@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить</title>
+    <link href="css/edit.css" rel="stylesheet" th:href="@{/css/edit.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+</head>
+<body>
+<main>
+    <p class="regText">
+        <a href="/">Регистрация</a>
+    </p>
+    <form class="regForm" th:method="POST" th:action="@{/user/{id}(id=${person.getId()})}" th:object="${person}">
+        <div class="block">
+            <div class="firstBlock">
+                <div class="name blocks">
+                    <p><label for="name">Имя </label></p>
+                    <input type="text" id="name" name="name" placeholder="Имя" th:field="*{name}">
+                </div>
+                <div class="surname blocks">
+                    <p><label for="surname">Фамилия </label></p>
+                    <input type="text" id="surname" name="surname" placeholder="Фамилия" th:field="*{surname}">
+                </div>
+            </div>
+            <div class="secondBlock">
+                <div class="email blocks">
+                    <p><label for="email">Почта </label></p>
+                    <input type="email" id="email" name="email" placeholder="Почта" th:field="*{email}">
+                </div>
+            </div>
+            <div class="email blocks">
+                <p><label for="state">Просмотр </label></p>
+                <p><label for="state">ALL - для  всех </label></p>
+                <p><label for="state">FRIENDS - для друзей </label></p>
+                <p><label for="state">LOGGED - для зарегистрированных </label></p>
+                <p><label for="state">NONE - никто </label></p>
+                <input type="text" id="state" name="state" placeholder="ALL" th:field="*{state}">
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn">Изменить</button>
+        </div>
+    </form>
+</main>
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script rel="script" src="js/script.js"></script>
+</body>
+</html>

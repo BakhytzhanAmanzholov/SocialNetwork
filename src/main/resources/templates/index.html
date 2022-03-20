@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Laboratory.kz</title>
+    <link href="css/style.css" rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1 class="headerMainText">Baha.kz</h1>
+    <p class="mainText">Социальная сеть</p>
+    <div class="headerLink" sec:authorize="isAnonymous()">
+        <a href="/login">Войти</a>
+    </div>
+    <div class="headerLink" sec:authorize="!isAnonymous()">
+        <a th:href="@{/user/{id}/{prime}/(id=${person.getId()}, prime = true)}" th:text="${person.getName}">Личный Кабинет</a>
+    </div>
+</header>
+<main>
+    <!--<div class="mainDiv">
+       <div class="divTest" th:each="test : ${tests}">
+            <img src="images/image.png">
+            <a th:href="@{/test/{id}(id=${test.getId()})}"><p th:text="${test.getType()}">Тест</p></a>
+        </div>
+    </div>-->
+    <a class="reg" th:href="@{/user/addFriend}"  sec:authorize="!isAnonymous()">
+        Добавить в друзья
+    </a>
+    <a class="reg" th:href="@{/user/newpost}"  sec:authorize="!isAnonymous()">
+        Новый пост
+    </a>
+    <table>
+        <tr>
+            <th>Почта</th>
+            <th>Отправить запрос</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td ><a th:text="${user.getEmail()}" th:href="@{/user/{id}/{prime}/(id=${user.getId()}, prime = false)}">Добавить в друзья</a></td>
+            <th sec:authorize="!isAnonymous()">
+                <a th:href="@{/user/newFriend/{emailSender}/{emailReceiver}/(emailSender=${person.getEmail()}, emailReceiver = ${user.getEmail()})}">Добавить в друзья</a></th>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+        </tr>
+        <tr th:each="post : ${posts}">
+            <td ><a th:text="${post.getTitle()}" th:href="@{/user/post/{id}/{prime}(id=${post.getId()}, prime =${post.isIfComments()})}">Добавить в друзья</a></td>
+            <td ><a th:text="${post.getContent()}">Добавить в друзья</a></td>
+            <td ><a th:text="${post.getSub()}">Добавить в друзья</a></td>
+        </tr>
+    </table>
+
+</main>
+</body>
+</html>

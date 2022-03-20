@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link href="css/cab.css" rel="stylesheet" th:href="@{/css/cab.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+</head>
+
+<body>
+<div class="data">
+    <div class="block">
+        <p class="minorText">Название: </p>
+        <p class="text" th:text="${post.getTitle()}">
+            VALUE
+        </p>
+    </div>
+    <div class="block">
+        <p class="minorText">Содержание: </p>
+        <p class="text" th:text="${post.getContent}">
+            VALUE
+        </p>
+    </div>
+    <div class="block">
+        <p class="minorText">Дата: </p>
+        <p class="text" th:text="${post.getSub()}">
+            VALUE
+        </p>
+    </div>
+    <div class="block" id="lastBlock">
+        <p class="minorText">Пользователь: </p>
+        <p class="text" th:text="${post.getPerson().getEmail()}">
+            VALUE
+        </p>
+    </div>
+
+</div>
+
+<div th:if="${post.isIfComments()}" sec:authorize="!isAnonymous()">
+    <a th:href="@{/user/newcomments/{id}(id = ${post.getId()})}">Добавить комментарий</a>
+</div>
+
+<table  th:if="${prime}">
+    <tr>
+        <th>Person</th>
+        <th>Content</th>
+        <th>Date</th>
+    </tr>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.getPerson().getEmail()}">Добавить в друзья</td>
+        <td th:text="${comment.getStr()}">Добавить в друзья</td>
+        <td th:text="${comment.getSub()}">Добавить в друзья</td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+body, p, h1, h2, h3, a {
+  margin: 0;
+  padding: 0; }
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #F0F0C9; }
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #342B2B; }
+
+body {
+  font: 100% Roboto, sans-serif;
+  color: #F0F0C9;
+  background-color: #342B2B; }
+
+.mainText {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 120px; }
+
+.data {
+  margin-left: 140px; }
+
+.block {
+  margin-bottom: 20px; }
+
+.minorText {
+  margin-bottom: 5px; }
+
+#lastBlock {
+  margin-bottom: 50px; }
+
+.editLink {
+  margin-left: 140px;
+  border-radius: 20px;
+  border: 1px solid #2892D7;
+  background-color: #2892D7;
+  padding: 10px; }
+
+.deleteForm {
+  margin-left: 140px;
+  margin-top: 40px; }
+  .deleteForm button {
+    border-radius: 20px;
+    border: 1px solid #2892D7;
+    background-color: #2892D7;
+    width: 160px;
+    padding: 10px;
+    color: #F0F0C9;
+    font-size: 18px; }
+.editOrDelete{
+  margin-top: 120px;
+}
+/*# sourceMappingURL=cab.css.map */

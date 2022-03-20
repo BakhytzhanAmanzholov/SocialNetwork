@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add friend</title>
+</head>
+<body>
+<form class="regForm" th:method="POST" th:action="@{/user/addingFriend}" th:object="${friend}" >
+    <div class="block">
+        <p><label for="friend">Почта получателя </label></p>
+        <input type="text" id="friend" name="friend" placeholder="Получатель" th:field="*{Receiver}">
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn">Отправить запрос в друзья</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить роль к пользователю</title>
+    <link href="../static/css/add.css" th:href="@{/css/add.css}" rel="stylesheet" />
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+</head>
+<body>
+<main>
+    <p class="roleText">
+        Добавить роль к пользователю
+    </p>
+    <form th:method="POST" th:action="@{/admin/role}" th:object="${form}">
+        <div class="block">
+            <p><label for="email">Почта пользователя</label></p>
+            <input type="email" id="email" name="email" placeholder="Почта" th:field="*{email}">
+        </div>
+        <div class="block">
+            <p><label for="roleName">Роль </label></p>
+            <input type="text" id="roleName" name="roleName" placeholder="Роль" th:field="*{roleName}">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+<script rel="script" src="js/script.js"></script>
+</body>
+</html>

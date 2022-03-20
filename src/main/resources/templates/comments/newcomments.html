@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>New Post</title>
+    <link href="css/reg.css" rel="stylesheet" th:href="@{/css/reg.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+
+    </style>
+
+</head>
+<main>
+    <p class="regText">
+        Новый комментарий
+    </p>
+    <form class="regForm" th:method="POST" th:action="@{/user/createComment/{id}(id = ${id})}" th:object="${comment}">
+        <div class="block">
+            <div class="firstBlock">
+                <div class="name blocks">
+                    <p><label for="str">Контент комментария </label></p>
+                    <input type="text" id="str" name="str" placeholder="Контент" th:field="*{str}">
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn">Добавить комментарий</button>
+        </div>
+    </form>
+
+</main>
+</body>
+</html>

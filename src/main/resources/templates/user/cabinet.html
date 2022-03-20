@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный Кабинет</title>
+    <link href="css/cab.css" rel="stylesheet" th:href="@{/css/cab.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+</head>
+<body>
+<main>
+    <a href="/"><p class="mainText">
+        Личный кабинет
+    </p></a>
+    <div class="data">
+        <div class="block">
+            <p class="minorText">Имя: </p>
+            <p class="text" th:text="${person.getName()}">
+                VALUE
+            </p>
+        </div>
+        <div class="block">
+            <p class="minorText">Фамилия: </p>
+            <p class="text" th:text="${person.getSurname()}">
+                VALUE
+            </p>
+        </div>
+        <div class="block">
+            <p class="minorText">Тесты: </p>
+            <p class="text" th:text="${person.getSurname()}">
+                VALUE
+            </p>
+        </div>
+        <div class="block" id="lastBlock">
+            <p class="minorText">Почта: </p>
+            <p class="text" th:text="${person.getEmail()}">
+                VALUE
+            </p>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+        </tr>
+        <tr th:each="post : ${posts}">
+            <td ><a th:text="${post.getTitle()}" th:href="@{/user/post/{id}/{prime}(id=${post.getId()}, prime =${post.isIfComments()})}">Добавить в друзья</a></td>
+            <td ><a th:text="${post.getContent()}">Добавить в друзья</a></td>
+            <td ><a th:text="${post.getSub()}">Добавить в друзья</a></td>
+        </tr>
+    </table>
+
+    <div th:if="${prime}">
+        <table>
+            <tr>
+                <th>Почта отправителя: </th>
+                <th>Принять</th>
+                <th>Отказать</th>
+            </tr>
+            <tr th:each="friend : ${friends}">
+                <td th:text="${friend.getSender()}">Onions</td>
+                <td><a th:href="@{/user/accept/{idReceiver}/{idSender}(idReceiver = ${friend.getReceiver}, idSender = ${friend.getSender})}" >Принять</a></td>
+                <td><a th:href="@{/user/decline/{idReceiver}/{idSender}(idReceiver = ${friend.getReceiver}, idSender = ${friend.getSender})}" >Принять</a></td>
+            </tr>
+        </table>
+
+        <div class="editOrDelete" >
+            <div>
+                <a class="editLink" th:href="@{/user/{id}/edit(id=${person.getId()})}">Изменить данные</a>
+
+                <form class="deleteForm" th:method="DELETE" th:action="@{/user/{id}(id=${person.getId()})}">
+                    <button type="submit" class="btn btn-primary">Удалить пользователя</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script rel="script" src="script/script.js"></script>
+</body>
+</html>

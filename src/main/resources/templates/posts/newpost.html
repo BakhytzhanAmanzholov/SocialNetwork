@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title>New Post</title>
+    <link href="css/reg.css" rel="stylesheet" th:href="@{/css/reg.css}">
+    <link rel="icon" href="images/favicon.ico" type=”image/x-icon” sizes="16x16" th:href="@{/images/favicon.ico}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500&display=swap" rel="stylesheet">
+    <style>
+        html { overflow:  hidden; }
+    </style>
+
+</head>
+<main>
+    <p class="regText">
+        Новый пост
+    </p>
+    <form class="regForm" th:method="POST" th:action="@{/user/createPost}" th:object="${post}">
+        <div class="block">
+            <div class="firstBlock">
+                <div class="name blocks">
+                    <p><label for="title">Название поста </label></p>
+                    <input type="text" id="title" name="title" placeholder="Title" th:field="*{title}">
+                </div>
+                <div class="surname blocks">
+                    <p><label for="description">Описание проекта </label></p>
+                    <input type="text" id="description" name="description" placeholder="Описание"  th:field="*{content}">
+                </div>
+            </div>
+            <div class="secondBlock">
+                <div class="email blocks">
+                    <p><label for="state">Просмотр </label></p>
+                    <p><label for="state">ALL - для  всех </label></p>
+                    <p><label for="state">FRIENDS - для друзей </label></p>
+                    <p><label for="state">LOGGED - для зарегистрированных </label></p>
+                    <p><label for="state">NONE - никто </label></p>
+                    <input type="text" id="state" name="state" placeholder="ALL" th:field="*{state}">
+                </div>
+                <div class="password blocks">
+                    <p><label for="boolean">Разрешить комментировать </label></p>
+                    <input type="checkbox" id="boolean" name="boolean" placeholder="ifComments" th:field="*{ifComments}">
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn">Добавить пост</button>
+        </div>
+    </form>
+
+</main>
+</body>
+</html>
